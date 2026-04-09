@@ -15,21 +15,21 @@ app.use(cors());
 app.use(express.json()); 
 
 
-// const pool = new Pool({
-//   user: 'victor',         
-//   host: '192.168.1.32',        
-//   database: 'srvsuportebd', 
-//   password: 'NeyVic8+',    
-//   port: 5432,              
-// });
-
 const pool = new Pool({
-  user: 'postgres',         
-  host: '192.168.9.122',        
-  database: 'impressoras', 
+  user: 'victor',         
+  host: '192.168.1.32',        
+  database: 'srvsuportebd', 
   password: 'NeyVic8+',    
   port: 5432,              
 });
+
+// const pool = new Pool({
+//   user: 'postgres',         
+//   host: '192.168.9.122',        
+//   database: 'impressoras', 
+//   password: 'NeyVic8+',    
+//   port: 5432,              
+// });
 
 
 pool.connect((err, client, release) => {
