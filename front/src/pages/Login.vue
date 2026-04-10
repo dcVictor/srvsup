@@ -123,7 +123,7 @@ const makeLogin = async () => { // Adicionado async para o fetch
 
  
   try {
-    const response = await fetch('http://192.168.1.53:4174/api/login-ad', {
+    const response = await fetch('http://192.168.1.53:3000/api/login-ad', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 

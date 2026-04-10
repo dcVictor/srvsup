@@ -99,7 +99,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const API_URL = 'http://192.168.1.12:4174/api';
+const API_URL = 'http://192.168.1.12:3000/api';
 
 const marcas = ref([]);
 const printers = ref([]);

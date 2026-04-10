@@ -7,7 +7,7 @@ const { Pool } = require('pg')
 const cron = require('node-cron');
 
 const app = express();
-const PORT = 4174;
+const PORT = 3000;
 
 const { autenticarNoAD } = require('./authService');
 
