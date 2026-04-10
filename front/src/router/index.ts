@@ -67,18 +67,24 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to: any, _from: any, next: any) => {
+router.beforeEach((to, _from) => {
+  // 1. Verificação de Autenticação
   if (to.meta.requerAutenticacao) {
     const estaLogado = localStorage.getItem('autenticado') === 'sim'
-    
-    if (estaLogado) {
-      next()
-    } else {
-      next('/login')
+
+    if (!estaLogado) {
+      // Se não estiver logado, redireciona para o login
+      return { name: 'Login' } // Ou o caminho: return '/login'
     }
-  } else {
-    next() 
+    // Se estiver logado, não retorna nada (permite a navegação)
+  }
+
+  // 2. Proteção contra o erro "No match found" (Câmeras)
+  // Se o Vue Router tentar processar uma rota que ele não conhece 
+  // e que deveria ser externa (como as do MediaMTX), nós paramos ele aqui.
+  if (to.matched.length === 0) {
+    console.warn(`Rota não encontrada: ${to.path}. Verifique se é um link externo.`);
+    return false; // Cancela a navegação interna do Vue para caminhos desconhecidos
   }
 })
-
 export default router
