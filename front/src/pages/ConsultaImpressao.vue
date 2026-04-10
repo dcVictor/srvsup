@@ -102,7 +102,7 @@ const filteredHistory = computed(() => {
 const handleFullRefresh = async () => {
   loading.value = true;
   try {
-    const responseRefresh = await fetch('http://192.168.1.32:4174/api/printersrefresh');
+    const responseRefresh = await fetch('http://192.168.1.53:4174/api/printersrefresh');
     if (responseRefresh.ok) await fetchHistory(); 
   } catch (error) {
     console.error('Erro no refresh total:', error);
@@ -114,7 +114,7 @@ const handleFullRefresh = async () => {
 const fetchHistory = async () => {
   if (!loading.value) loading.value = true; 
   try {
-    const response = await fetch(`http://192.168.1.32:4174/api/historico?dataInicial=${startDate.value}&dataFinal=${endDate.value}`);
+    const response = await fetch(`http://192.168.1.53:4174/api/historico?dataInicial=${startDate.value}&dataFinal=${endDate.value}`);
     history.value = await response.json();
   } catch (error) {
     console.error('Erro ao buscar histórico:', error);

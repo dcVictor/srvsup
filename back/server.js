@@ -16,10 +16,10 @@ app.use(express.json());
 
 
 const pool = new Pool({
-  user: 'victor',         
-  host: '192.168.1.32',        
-  database: 'srvsuportebd', 
-  password: 'NeyVic8+',    
+  user: 'postgres',         
+  host: '192.168.1.53',        
+  database: 'srvsupDB', 
+  password: 'KALIX',    
   port: 5432,              
 });
 

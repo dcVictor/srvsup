@@ -43,7 +43,7 @@ const loading = ref(true);
 // Função para buscar dados da nossa API Node.js
 const fetchPrinters = async () => {
   try {
-    const response = await fetch('http://192.168.1.32:4174/api/printers');
+    const response = await fetch('http://192.168.1.53:4174/api/printers');
     printers.value = await response.json();
   } catch (error) {
     console.error('Erro ao buscar impressoras:', error);

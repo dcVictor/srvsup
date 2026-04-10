@@ -90,7 +90,7 @@ let intervalo = null;
 let snackbarTimeout = null;
 
 // --- CONFIGURAÇÃO DAS 8 CÂMERAS ---
-const baseUrl = "http://192.168.1.32:8889";
+const baseUrl = "http://192.168.1.53:8889";
 const cameras = ref([
   { id: 1, nome: "Câmera 1", url: `${baseUrl}/cam1` },
   { id: 2, nome: "Câmera 2", url: `${baseUrl}/cam2` },

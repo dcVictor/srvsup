@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://192.168.1.32:4174'
+  baseURL: 'http://192.168.1.53:4174'
 });
 
 // Interceptor para adicionar o token nas requisições
