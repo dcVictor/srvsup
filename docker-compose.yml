@@ -1,31 +1,32 @@
 services:
   database:
-    image: postgres
-    restart: always
+    image: postgres:latest
     container_name: srvsupDB
+    restart: always
     environment:
       POSTGRES_PASSWORD: KALIX
       POSTGRES_DB: srvsupDB
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql
 
   backend:
     build: ./back
-    restart: always
     container_name: srvsupBack
+    restart: always
     ports:
       - "3000:3000"
     environment:
+      # Ajustado de @database para @database (deve bater com o nome do serviço acima)
       DATABASE_URL: postgres://postgres:KALIX@database:5432/srvsupDB
     depends_on:
       - database
 
   frontend:
     build: ./front
-    restart: always
     container_name: srvsupFront
+    restart: always
     ports:
       - "5173:5173"
     depends_on:
@@ -43,19 +44,17 @@ services:
       - frontend
       - backend
 
-
   mediamtx:
     image: bluenviron/mediamtx:latest
     container_name: srvsupMedia
     restart: always
     ports:
-      - "8554:8554" # RTSP
-      - "1935:1935" # RTMP
-      - "8888:8888" # HLS
-      - "8889:8889" # WebRTC
+      - "8554:8554"
+      - "1935:1935"
+      - "8888:8888"
+      - "8889:8889"
     volumes:
-      # Mapeia o seu arquivo local para dentro do container
       - ./mediamtx.yml:/mediamtx.yml:ro
 
 volumes:
-  pgdata: 
+  pgdata: # Declaração final do volume para persistência de dados
