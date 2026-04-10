@@ -23,13 +23,6 @@ const pool = new Pool({
   port: 5432,              
 });
 
-// const pool = new Pool({
-//   user: 'postgres',         
-//   host: '192.168.9.122',        
-//   database: 'impressoras', 
-//   password: 'NeyVic8+',    
-//   port: 5432,              
-// });
 
 
 pool.connect((err, client, release) => {
