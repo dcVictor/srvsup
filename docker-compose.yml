@@ -30,7 +30,7 @@ services:
       - "5173:5173"
     depends_on:
       - backend
-      
+
   nginx:
     image: nginx:alpine
     container_name: srvsupProxy
@@ -42,6 +42,20 @@ services:
     depends_on:
       - frontend
       - backend
+
+
+  mediamtx:
+    image: bluenviron/mediamtx:latest
+    container_name: srvsupMedia
+    restart: always
+    ports:
+      - "8554:8554" # RTSP
+      - "1935:1935" # RTMP
+      - "8888:8888" # HLS
+      - "8889:8889" # WebRTC
+    volumes:
+      # Mapeia o seu arquivo local para dentro do container
+      - ./mediamtx.yml:/mediamtx.yml:ro
 
 volumes:
   pgdata: 
